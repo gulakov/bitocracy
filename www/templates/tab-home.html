@@ -1,0 +1,27 @@
+<ion-view title="My Votes">
+  <ion-content class="padding">
+    <h1>My Votes</h1>
+
+    <h3>Current</h3>
+ 	<ion-list>
+      <ion-item type="item-text-wrap"  ng-repeat="election in elections  | filter: { current: true }"   href="#/tab/election/{{election.id}}">
+      	{{election.name}}
+      </ion-item>
+     
+     </ion-list>
+
+ 
+    <h3>Past</h3>
+
+
+      <ion-list >
+
+	 <ion-item type="item-text-wrap"  ng-repeat="election in elections  | filter: { current: false }"   href="#/tab/election/{{election.id}}">
+      	{{election.name}}
+      </ion-item>
+
+     </ion-list>
+
+
+  </ion-content>
+</ion-view>
