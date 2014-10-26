@@ -1,76 +1,48 @@
-// Ionic Starter App
+/**
+ * App configuration and initialisation
+ */
 
-// angular.module is a global place for creating, registering and retrieving Angular modules
-// 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
-// the 2nd parameter is an array of 'requires'
-// 'starter.services' is found in services.js
-// 'starter.controllers' is found in controllers.js
-angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
+var app = angular.module('Bitocracy', ['ionic'])
 
-.run(function($ionicPlatform) {
-  $ionicPlatform.ready(function() {
-    // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
-    // for form inputs)
-    if(window.cordova && window.cordova.plugins.Keyboard) {
-      cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
-    }
-    if(window.StatusBar) {
-      // org.apache.cordova.statusbar required
-      StatusBar.styleDefault();
-    }
-  });
-})
+  .run(function ($ionicPlatform, $window) {
+    //$ionicPlatform.ready(function () {
+    //  if ($window.StatusBar) {
+    //    StatusBar.styleDefault();
+    //  }
+    //});
+  })
 
-.config(function($stateProvider, $urlRouterProvider) {
+  .config(function ($stateProvider, $urlRouterProvider) {
 
-  // Ionic uses AngularUI Router which uses the concept of states
-  // Learn more here: https://github.com/angular-ui/ui-router
-  // Set up the various states which the app can be in.
-  // Each state's controller can be found in controllers.js
-  $stateProvider
+    $stateProvider
 
-    // setup an abstract state for the tabs directive
-    .state('tab', {
-      url: "/tab",
-      abstract: true,
-      templateUrl: "templates/tabs.html"
-    })
+      .state('tab', {
+        url: "/tab",
+        abstract: true,
+        templateUrl: 'views/tabs.html'
+      })
 
-    // Each tab has its own nav history stack:
-
-    .state('tab.home', {
-      url: '/home',
-      views: {
-        'tab-home': {
-          templateUrl: 'templates/tab-home.html',
-          controller: 'HomeCtrl'
+      .state('tab.tokens', {
+        url: '/tokens',
+        views: {
+          'tab-tokens': {
+            templateUrl: 'views/tab-tokens.html',
+            controller: 'TokensController'
+          }
         }
-      }
-    })
+      })
 
-  
-    .state('tab.elections-detail', {
-      url: '/election/:id',
-      views: {
-        'tab-elections': {
-          templateUrl: 'templates/tab-elections.html',
-          controller: 'ElectionsDetailCtrl'
+      .state('tab.project-details', {
+        url: '/project-details/{id}',
+        views: {
+          'tab-tokens': {
+            templateUrl: 'views/tab-project-details.html',
+            controller: 'ProjectDetailsController'
+          }
         }
-      }
-    })
+      })
 
-    .state('tab.create', {
-      url: '/create',
-      views: {
-        'tab-create': {
-          templateUrl: 'templates/tab-create.html',
-          controller: 'CreateCtrl'
-        }
-      }
-    });
+    // default state
+    $urlRouterProvider.otherwise('/tab/tokens');
 
-  // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/tab/home');
-
-});
-
+  })

@@ -1,7 +1,7 @@
 {
   "name": "bitocracy",
   "version": "1.0.0",
-  "description": "bitocracy: An Ionic project",
+  "description": "Bitocracy",
   "dependencies": {
     "gulp": "^3.5.6",
     "gulp-sass": "^0.7.1",
