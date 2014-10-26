@@ -3,24 +3,24 @@ angular.module('starter.services', [])
 /**
  * A simple example service that returns some data.
  */
-.factory('Friends', function() {
+.factory('Elections', function() {
   // Might use a resource here that returns a JSON array
 
   // Some fake testing data
-  var friends = [
-    { id: 0, name: 'Scruff McGruff' },
-    { id: 1, name: 'G.I. Joe' },
-    { id: 2, name: 'Miss Frizzle' },
-    { id: 3, name: 'Ash Ketchum' }
+  var elections = [
+    { id: 0, name: 'Feedly.com: our software team should include friend suggestions' , current: true },
+    { id: 1, name: 'American idol contestant results' , current: true},
+    { id: 2, name: 'Parking spaces in local town' , current: false},
+    { id: 3, name: 'Parent-teacher association - distribute budget' , current: false}
   ];
 
   return {
     all: function() {
-      return friends;
+      return elections;
     },
-    get: function(friendId) {
+    get: function(id) {
       // Simple index lookup
-      return friends[friendId];
+      return elections[id];
     }
   }
 });
